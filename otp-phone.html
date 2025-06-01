@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification | The Next Naija Movie Star</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        /* OTP Specific Styles */
+        .otp-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .otp-icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+            background: #F4EBFF;
+            border: 12px solid #F9F5FF;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .otp-icon-phone {
+            font-size: 32px;
+            color: #FFBA52;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .otp-icon-mail {
+            font-size: 18px;
+            color: #FFBA52;
+            position: absolute;
+            right: -20px;
+            top: 45%;
+            transform: translateY(-50%);
+            animation: mailEntry 1s ease-in-out forwards;
+        }
+        
+        @keyframes mailEntry {
+            0% { right: -20px; opacity: 0; }
+            100% { right: 10px; opacity: 1; }
+        }
+        
+        .otp-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1B1B1B;
+        }
+        
+        .otp-instructions {
+            font-size: 14.5px;
+            line-height: 1.5;
+            color: #475467;
+            margin-bottom: 20px;
+        }
+
+        .otp-inputs input {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #D9D9D9;
+        }
+        
+        .otp-input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #D9D9D9;
+            transition: all 0.2s ease;
+        }
+        
+        .otp-input:focus {
+            outline: none;
+            border-color: #FFBA52;
+            box-shadow: 0 0 0 2px rgba(255, 186, 82, 0.3);
+        }
+        
+        .otp-footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .verify-button {
+            background-color: #FFBA52;
+            color: #1B1B1B;
+            border: none;
+            padding: 16px 100px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 22rem;
+            height: 54px;
+        }
+        
+        .verify-button:hover {
+            background-color: #ffcc7a;
+            transform: translateY(-2px);
+        }
+        
+        .back-to-login {
+            color: #606060;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .back-to-login:hover {
+            color: #E58A00;
+        }
+        
+        @media (max-width: 480px) {
+            .otp-inputs {
+                gap: 12px;
+            }
+            
+            .otp-input {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+            
+            .verify-button {
+                padding: 14px 70px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="signup-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- OTP Verification Section -->
+    <section class="signup-section">
+        <div class="otp-container">
+            <div class="otp-icon-container">
+                <i class="fas fa-mobile-alt otp-icon-phone"></i>
+                <i class="fas fa-envelope otp-icon-mail"></i>
+            </div>
+            
+            <h1 class="otp-title">Enter OTP</h1>
+            <p class="otp-instructions">Please enter the code sent to your device.</p>
+            
+            <div class="otp-inputs">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+            </div>
+            
+            <div class="otp-footer-links">
+                <button class="verify-button">Verify</button>
+                <a href="login.html" class="back-to-login">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to login
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Auto-focus and move between OTP inputs
+        document.querySelectorAll('.otp-input').forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1) {
+                    if (index < 5) {
+                        document.querySelectorAll('.otp-input')[index + 1].focus();
+                    }
+                }
+            });
+            
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value === '') {
+                    if (index > 0) {
+                        document.querySelectorAll('.otp-input')[index - 1].focus();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

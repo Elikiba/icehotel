@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Verification | The Next Naija Movie Star</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        /* Verification Specific Styles */
+        .verification-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+        }
+        
+        .verification-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .verification-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1B1B1B;
+        }
+        
+        .verification-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #475467;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .verification-form {
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            width: 100%;;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1B1B1B;
+        }
+        
+        .phone-input-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .country-code {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.05);
+            font-size: 15px;
+            color: #1B1B1B;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            min-width: 70px;
+            text-align: center;
+        }
+        
+        .phone-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background-color: transparent;
+            font-size: 15px;
+            min-width: 0;
+        }
+        
+        .phone-input:focus {
+            outline: none;
+        }
+        
+        .next-button {
+            background-color: #ffba52;
+            color: #1B1B1B;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            height: 54px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .next-button:hover {
+            background-color: #ffcc7a;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .verification-container {
+                padding: 30px 15px;
+            }
+            
+            .verification-form {
+                padding: 20px;
+            }
+            
+            .verification-title {
+                font-size: 1.8rem;
+            }
+            
+            .country-code {
+                padding: 14px;
+                min-width: 60px;
+                font-size: 14px;
+            }
+            
+            .phone-input {
+                padding: 1px;
+                font-size: 14px;
+            }
+            
+            .next-button {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .verification-container {
+                padding: 20px 10px;
+            }
+            
+            .verification-form {
+                padding: 15px;
+            }
+            
+            .verification-title {
+                font-size: 1.6rem;
+            }
+            
+            .country-code {
+                padding: 14px;
+                min-width: 55px;
+                font-size: 13px;
+            }
+            
+            .phone-input {
+                padding: 1px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body class="signup-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Verification Section -->
+    <section class="signup-section">
+        <div class="verification-container">
+            <div class="verification-header">
+                <h1 class="verification-title">Identity Verification</h1>
+                <p class="verification-description">
+                    This step helps us confirm you're eligible to vote.
+                </p>
+            </div>
+            
+            <div class="verification-form">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <div class="phone-input-container">
+                        <span class="country-code">+234</span>
+                        <input type="tel" id="phoneNumber" class="phone-input" placeholder="Enter your phone number">
+                    </div>
+                </div>
+                
+                <a href="" class="next-button">Next</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

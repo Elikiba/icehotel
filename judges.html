@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judges - The Next Naija Movie Star</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #FFBA52;
+            --background-color: #000;
+            --text-color: #fff;
+        }
+
+        /* ===== Judge Detail Specific Styles ===== */
+        .main-content {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 37px;
+            background-color: var(--background-color);
+        }
+
+        .judge-detail-section {
+            width: 100%;
+            max-width: 736px;
+            margin: 0 auto;
+            padding: 100px 20px 30px;
+            position: relative;
+        }
+
+        .judge-hero {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .judge-image-large {
+            width: 740px;
+            height: 304px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .judge-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .judge-name-large {
+            font-size: 24px;
+            font-weight: 550;
+            line-height: 100%;
+            color: var(--text-color);
+        }
+
+        .judge-role-large {
+            color: var(--text-color);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .biography-section {
+            width: 739px;
+            margin-top: 20px;
+        }
+
+        .biography-title {
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-align: left;
+            letter-spacing: 1px;
+        }
+
+        .biography-text {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .other-judges-section {
+            width: 100%;
+            max-width: 736px;
+            margin: 0 auto;
+            padding: 20px 20px 80px;
+        }
+
+        .other-judges-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 18px;
+            color: var(--text-color);
+            text-align: left;
+            letter-spacing: 1px;
+        }
+
+        .other-judges-grid {
+            display: flex;
+            justify-content: flex-start;
+            gap: 38px;
+            flex-wrap: wrap;
+        }
+
+        .other-judge-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            max-width: 200px;
+        }
+
+        .other-judge-image {
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .other-judge-card:hover .other-judge-image {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 186, 82, 0.3);
+        }
+
+        .other-judge-name {
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .other-judge-role {
+            color: var(--text-color);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        /* ===== Responsive Design ===== */
+        
+        /* Large Tablets and Small Desktops */
+        @media (max-width: 1024px) {
+            .judge-detail-section {
+                max-width: 90%;
+                padding: 120px 30px 25px;
+            }
+
+            .judge-image-large {
+                width: 100%;
+                height: 280px;
+            }
+
+            .biography-section {
+                width: 100%;
+            }
+
+            .other-judges-section {
+                max-width: 90%;
+                padding: 15px 30px 70px;
+            }
+
+            .other-judges-grid {
+                gap: 30px;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .other-judge-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .other-judge-card {
+                max-width: 180px;
+            }
+        }
+
+        /* Standard Tablets */
+        @media (max-width: 768px) {
+            .judge-detail-section {
+                max-width: 95%;
+                padding: 100px 25px 20px;
+            }
+
+            .judge-hero {
+                padding: 20px 0;
+                gap: 25px;
+            }
+
+            .judge-image-large {
+                width: 100%;
+                height: 250px;
+            }
+
+            .judge-name-large {
+                font-size: 22px;
+            }
+
+            .judge-role-large {
+                font-size: 15px;
+            }
+
+            .biography-title {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .biography-text {
+                font-size: 14px;
+                line-height: 1.7;
+                margin-bottom: 18px;
+            }
+
+            .other-judges-section {
+                max-width: 95%;
+                padding: 15px 25px 60px;
+            }
+
+            .other-judges-title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .other-judges-grid {
+                gap: 25px;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .other-judge-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .other-judge-card {
+                max-width: 170px;
+            }
+
+            .other-judge-name {
+                font-size: 15px;
+            }
+
+            .other-judge-role {
+                font-size: 11px;
+            }
+        }
+
+        /* Small Tablets and Large Phones */
+        @media (max-width: 576px) {
+            .judge-detail-section {
+                padding: 80px 20px 15px;
+            }
+
+            .judge-hero {
+                gap: 20px;
+                padding: 25px 10px;
+            }
+
+            .judge-image-large {
+                height: 200px;
+            }
+
+            .judge-name-large {
+                font-size: 20px;
+            }
+
+            .judge-role-large {
+                font-size: 14px;
+            }
+
+            .biography-title {
+                font-size: 14px;
+            }
+
+            .biography-text {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .other-judges-section {
+                padding: 10px 20px 50px;
+            }
+
+            .other-judges-title {
+                font-size: 14px;
+            }
+
+            .other-judges-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 25px 15px;
+                justify-items: center;
+            }
+
+            /* Center the third item when it's alone on its row */
+            .other-judge-card:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+
+            .other-judge-card {
+                max-width: 140px;
+            }
+
+            .other-judge-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .other-judge-name {
+                font-size: 14px;
+            }
+
+            .other-judge-role {
+                font-size: 10px;
+            }
+        }
+
+        /* Mobile Phones */
+        @media (max-width: 480px) {
+            .judge-detail-section {
+                padding: 60px 15px 10px;
+            }
+
+            .judge-hero {
+                padding: 20px 8px;
+            }
+
+            .judge-image-large {
+                height: 160px;
+            }
+
+            .judge-name-large {
+                font-size: 18px;
+            }
+
+            .biography-text {
+                font-size: 12px;
+            }
+
+            .other-judges-section {
+                padding: 8px 15px 40px;
+            }
+
+            .other-judges-grid {
+                gap: 20px 10px;
+            }
+
+            /* Center the third item when it's alone on its row */
+            .other-judge-card:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+
+            .other-judge-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .other-judge-card {
+                max-width: 120px;
+            }
+
+            .other-judge-name {
+                font-size: 12px;
+            }
+
+            .other-judge-role {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Preloader -->
+     <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html#home">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Judge Detail Section -->
+        <section class="judge-detail-section">
+            <div class="judge-hero">
+                <img src="images/isime-2.png" alt="Nancy Isime" class="judge-image-large">
+                <div class="judge-info">
+                    <h1 class="judge-name-large">Nancy Isime</h1>
+                    <p class="judge-role-large">Judge</p>
+                </div>
+            </div>
+
+            <div class="biography-section">
+                <h2 class="biography-title">JUDGE BIOGRAPHY</h2>
+                
+                <p class="biography-text">
+                    Nancy Isime, born on December 17, 1991, in Edo State, Nigeria, is a powerhouse in entertainment, bringing her vast experience as an actress, model, and presenter to her role as a judge on <span class="highlight">The Next Naija Movie Star 💥</span>. Growing up in Lagos after losing her mother at age five, she was raised by a strict father whose discipline shaped her resilience and drive. Her early years in Nigeria's bustling commercial hub sparked a love for performance, which she pursued alongside her education—a foundational course at the University of Port Harcourt and a diploma in Social Work from the University of Lagos. Nancy's career kicked off with modeling, where she clinched the Miss Valentine International title in 2009 and worked with brands like Konga Online, before breaking into acting with her debut in the 2011 TV series "Echoes". Her natural charisma soon landed her hosting roles on shows like "The Squeez" and backstage segments for "MTN Project Fame Season 7", setting the stage for her meteoric rise.
+                </p>
+
+                <p class="biography-text">
+                    Her acting career reached new heights with standout performances in Nollywood blockbusters, cementing her status as a versatile talent and a sharp-eyed judge for aspiring stars. She gained widespread recognition in "Living In Bondage: Breaking Free" (2019), followed by Netflix's "Blood Sisters" (2022), where she played a fierce, loyal friend, and "Shanty Town" (2023), a gritty role that sparked global buzz. Nancy's presenting gigs further showcase her knack for spotting potential, having hosted "The Voice Nigeria" (2021), co-hosted "The Headies" (2019) with Reminisce, and launched "The Nancy Isime Show" (2019), a platform blending entertainment and inspiration. Her trophy cabinet boasts accolades like Best Supporting Actress (English) at the 2019 City People Movie Awards and VJ of the Year (2016), while a 2023 honorary Doctorate in Arts and Philosophy from Prowress University, USA, underscores her influence. Standing at 5'11", her commanding presence and warm approach make her a relatable yet authoritative figure on the judging panel.
+                </p>
+
+                <p class="biography-text">
+                    Beyond the spotlight, Nancy's commitment to uplifting others enhances her role on <span class="highlight">The Next Naija Movie Star 💥</span>, where she seeks contestants who embody not just talent but also the grit to succeed in Nollywood's competitive landscape. Her journey—from a determined youth in Lagos to a Nollywood icon with over 50 projects—equips her with a unique blend of industry insight and empathy. With 14 years of experience spanning acting, hosting, and producing, she evaluates contestants with an eye for passion, originality, and resilience, qualities she's honed through her own challenges and triumphs. Nancy's blend of professionalism and genuine care ensures she not only critiques but inspires, guiding the next wave of movie stars to carry Nollywood's legacy forward with authenticity and flair.
+                </p>
+            </div>
+        </section>
+
+        <!-- Other Judges Section -->
+        <section class="other-judges-section">
+            <h2 class="other-judges-title">OTHER JUDGES</h2>
+            <div class="other-judges-grid">
+                <div class="other-judge-card">
+                    <img src="images/uzor.png" alt="Uzor Arukwe" class="other-judge-image">
+                    <h3 class="other-judge-name">Uzor Arukwe</h3>
+                    <p class="other-judge-role">Judge</p>
+                </div>
+                
+                <div class="other-judge-card">
+                    <img src="images/eso.png" alt="Eso Dike" class="other-judge-image">
+                    <h3 class="other-judge-name">Eso Dike</h3>
+                    <p class="other-judge-role">Judge</p>
+                </div>
+                
+                <div class="other-judge-card">
+                    <a href="host.html"><img src="images/peg.png" alt="Peggy Ovire Leonard" class="other-judge-image"></a>
+                    <h3 class="other-judge-name">Peggy Ovire Leonard</h3>
+                    <p class="other-judge-role">Host</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

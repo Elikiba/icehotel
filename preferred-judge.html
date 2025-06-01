@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Judge | The Next Naija Movie Star</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        /* Base styles */
+        :root {
+            --green: #5CDA6D;
+            --gold: #FFBA52;
+            --gray: #D5D5D5;
+            --border-thickness: 1px;
+        }
+        
+        body.signup-page {
+            background-color: #fff;
+            color: #000;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Main container */
+        .judge-selection-container {
+            margin: 0 auto;
+            padding: 7.5rem 1.25rem 3.75rem;
+            width: 100%;
+            max-width: 70rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Header section */
+        .judge-selection-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+            max-width: 50rem;
+        }
+        
+        .judge-selection-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1B1B1B;
+        }
+        
+        .judge-selection-description {
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
+            line-height: 1.6;
+            color: #475467;
+            margin-bottom: 0.3125rem;
+            text-align: center;
+            max-width: 100%;
+        }
+        
+        /* Judge rows container */
+        .judge-rows-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.875rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 100%; 
+        }
+        
+        /* Individual judge row */
+        .judge-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem;
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Judge image and name container */
+        .judge-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.625rem;
+            width: 100%;
+        }
+        
+        /* Judge image */
+        .judge-image-container {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: var(--border-thickness) solid var(--gold);
+        }
+        
+        .judge-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Judge name */
+        .judge-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+        }
+        
+        /* Checkboxes container */
+        .checkboxes-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            padding: 0.625rem 0;
+            overflow-x: auto;
+        }
+        
+        /* Checkbox styles */
+        .checkbox-item {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            border: var(--border-thickness) solid transparent;
+        }
+        
+        .checkbox-item::after {
+            content: "✔";
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-style: normal;
+            line-height: 1;
+        }
+        
+        /* Checkbox states */
+        .checkbox-item.green {
+            background-color: var(--green);
+            cursor: default;
+            pointer-events: none;
+        }
+        
+        .checkbox-item.gray {
+            background-color: var(--gray);
+        }
+        
+        .checkbox-item.gold {
+            background-color: var(--gold);
+        }
+        
+        .checkbox-item.selected {
+            border-color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 0 var(--border-thickness) #000;
+        }
+        
+        .checkbox-item.disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Submit button section */
+        .submit-section {
+            text-align: center;
+            width: 100%;
+            margin-top: 0.5rem;
+            max-width: 100%;
+        }
+        
+        .submit-btn {
+            background-color: #E58A00;
+            color: white;
+            border: none;
+            width: 8.625rem;
+            height: 3.375rem;
+            border-radius: 8px;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #d48206;
+            transform: translateY(-0.125rem);
+        }
+        
+        /* Tablet styles */
+       @media (min-width: 600px) and (max-width: 900px) {
+            .judge-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 1.25rem;
+            }
+            
+            .judge-profile {
+                width: auto;
+                min-width: 8rem;
+            }
+            
+            .judge-image-container {
+                width: 6.5rem;
+                height: 6.5rem;
+            }
+            .checkboxes-container {
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                padding: 0.625rem 0;
+            }
+            
+            .checkbox-item {
+                width: 3.25rem;
+                height: 3.25rem;
+            }
+            
+            .checkbox-item::after {
+                font-size: 1.4rem;
+            }
+            
+            .submit-section {
+                text-align: right;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* Desktop styles */
+        @media (min-width: 901px) {
+            .judge-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 1.875rem;
+                padding: 1.5625rem;
+            }
+            
+            .judge-profile {
+                width: auto;
+                min-width: 9rem;
+            }
+            
+            .judge-image-container {
+                width: 8rem;
+                height: 8rem;
+            }
+            
+            .checkboxes-container {
+                gap: 0.9375rem;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .checkbox-item {
+                width: 4.5rem;
+                height: 4.5rem;
+            }
+            
+            .checkbox-item::after {
+                font-size: 2rem;
+            }
+            
+            .submit-section {
+                text-align: right;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 360px) {
+            .checkbox-item {
+                width: 3rem;
+                height: 3rem;
+            }
+            
+            .checkbox-item::after {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="signup-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Judge Selection Section -->
+    <section class="signup-section">
+        <div class="judge-selection-container">
+            <div class="judge-selection-header">
+                <h1 class="judge-selection-title">Select your Preferred Judge</h1>
+                <p class="judge-selection-description">
+                    Choose your mentor! Our expert judges are ready to guide you to stardom in <span class="highlight float">Next Naija Movie Star 💥</span>.
+                </p>
+                <p class="judge-selection-description">
+                    Each brings their own style, expertise, and vision. Check out their profiles below, then tick the box for
+                    the judge you'd thrive under. Who's the one to take you to the top?
+                </p>
+            </div>
+            
+            <div class="judge-rows-container">
+                <!-- Judge 1 - Uzor Arukwe -->
+                <div class="judge-row" data-judge="uzor">
+                    <div class="judge-profile">
+                        <div class="judge-image-container">
+                            <img src="images/uzor.png" alt="Uzor Arukwe" class="judge-image">
+                        </div>
+                        <h3 class="judge-name">Uzor Arukwe</h3>
+                    </div>
+                    <div class="checkboxes-container">
+                        <!-- First 3 green (unclickable) -->
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <!-- First gray (clickable) -->
+                        <div class="checkbox-item gray first-gray"></div>
+                        <!-- Remaining gray (initially disabled) -->
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                    </div>
+                </div>
+                
+                <!-- Judge 2 - Nancy Isime (with default gold selection) -->
+                <div class="judge-row" data-judge="nancy">
+                    <div class="judge-profile">
+                        <div class="judge-image-container">
+                            <img src="images/isime.png" alt="Nancy Isime" class="judge-image">
+                        </div>
+                        <h3 class="judge-name">Nancy Isime</h3>
+                    </div>
+                    <div class="checkboxes-container">
+                        <!-- First 5 green (unclickable) -->
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <!-- First gray (pre-selected as gold) -->
+                        <div class="checkbox-item gold first-gray selected"></div>
+                        <!-- Remaining gray (disabled) -->
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                    </div>
+                </div>
+                
+                <!-- Judge 3 - Eso Dike (now with 8 checkboxes) -->
+                <div class="judge-row" data-judge="eso">
+                    <div class="judge-profile">
+                        <div class="judge-image-container">
+                            <img src="images/eso.png" alt="Eso Dike" class="judge-image">
+                        </div>
+                        <h3 class="judge-name">Eso Dike</h3>
+                    </div>
+                    <div class="checkboxes-container">
+                        <!-- First 4 green (unclickable) -->
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <div class="checkbox-item green"></div>
+                        <!-- First gray (clickable) -->
+                        <div class="checkbox-item gray first-gray"></div>
+                        <!-- Additional gray checkboxes to make total 8 -->
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                        <div class="checkbox-item gray disabled"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submit button -->
+            <div class="submit-section">
+                <button class="submit-btn">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track the currently selected gold checkbox
+            let currentGoldCheckbox = document.querySelector('.checkbox-item.gold');
+            
+            // Initialize all first gray checkboxes
+            document.querySelectorAll('.first-gray').forEach(checkbox => {
+                // Skip if this is the pre-selected gold checkbox
+                if (checkbox.classList.contains('gold')) {
+                    checkbox.style.pointerEvents = 'none';
+                    return;
+                }
+                
+                checkbox.addEventListener('click', function() {
+                    // If this is already gold, do nothing
+                    if (this.classList.contains('gold')) return;
+                    
+                    // Remove any existing gold selection
+                    if (currentGoldCheckbox) {
+                        currentGoldCheckbox.classList.remove('gold', 'selected');
+                        currentGoldCheckbox.classList.add('gray');
+                        
+                        // Re-enable all first-gray checkboxes
+                        document.querySelectorAll('.first-gray').forEach(cb => {
+                            if (!cb.classList.contains('gold')) {
+                                cb.classList.remove('disabled');
+                                cb.style.pointerEvents = 'auto';
+                            }
+                        });
+                    }
+                    
+                    // Make this one gold
+                    this.classList.remove('gray', 'disabled');
+                    this.classList.add('gold', 'selected');
+                    currentGoldCheckbox = this;
+                    
+                    // Disable all other first-gray checkboxes
+                    document.querySelectorAll('.first-gray').forEach(cb => {
+                        if (cb !== this) {
+                            cb.classList.add('disabled');
+                            cb.style.pointerEvents = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contestant Sign-Up | The Next Naija Movie Star</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="signup-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sign-Up Form Section -->
+    <section class="signup-section">
+        <div class="signup-container">
+            <h1 class="signup-title">Contestant Sign-Up Form</h1>
+            
+            <form class="signup-form" id="contestantForm">
+                <!-- First Row -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName" required>First name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" required>Last name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                
+                <!-- Second Row -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email" required>Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" required>Phone number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <!-- Third Row -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="state" required>State of origin</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location" required>Current location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                </div>
+                
+                <!-- Fourth Row - Age, Gender, Height -->
+                <div class="form-grid three-column-grid">
+                    <div class="form-group">
+                        <label for="age" required>Age</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender" required>Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height" required>Height</label>
+                        <input type="text" id="height" name="height" placeholder="e.g. 5'9" required>
+                    </div>
+                </div>
+                
+                <!-- Fifth Row - Instagram and Username -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="instagram" required>Instagram handle</label>
+                        <input type="text" id="instagram" name="instagram" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username" required>Preferred Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                </div>
+                
+                <p class="form-note">Ensure all information provided is accurate, as incorrect details may lead to disqualification.</p>
+                
+                <div class="form-actions">
+                    <button type="submit" class="form-submit">Continue</button>
+                    <p class="form-login">Already registered? <a href="login.html">Sign in</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contestantForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>

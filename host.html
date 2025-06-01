@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host - The Next Naija Movie Star</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    
+      <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #FFBA52;
+            --background-color: #000;
+            --text-color: #fff;
+        }
+
+        /* ===== host Detail Specific Styles ===== */
+        .main-content {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 37px;
+            background-color: var(--background-color);
+        }
+
+        .host-detail-section {
+            width: 100%;
+            max-width: 736px;
+            margin: 0 auto;
+            padding: 100px 20px 30px;
+            position: relative;
+        }
+
+        .host-hero {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .host-image-large {
+            width: 740px;
+            height: 304px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .host-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .host-name-large {
+            font-size: 24px;
+            font-weight: 550;
+            line-height: 100%;
+            color: var(--text-color);
+        }
+
+        .host-role-large {
+            color: var(--text-color);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .biography-section {
+            width: 739px;
+            margin-top: 20px;
+        }
+
+        .biography-title {
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-align: left;
+            letter-spacing: 1px;
+        }
+
+        .biography-text {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .other-hosts-section {
+            width: 100%;
+            max-width: 736px;
+            margin: 0 auto;
+            padding: 20px 20px 80px;
+        }
+
+        .other-hosts-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 18px;
+            color: var(--text-color);
+            text-align: left;
+            letter-spacing: 1px;
+        }
+
+        .other-hosts-grid {
+            display: flex;
+            justify-content: flex-start;
+            gap: 38px;
+            flex-wrap: wrap;
+        }
+
+        .other-host-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            max-width: 200px;
+        }
+
+        .other-host-image {
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .other-host-card:hover .other-host-image {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 186, 82, 0.3);
+        }
+
+        .other-host-name {
+            font-size: 14px;
+            font-weight: 550;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .other-host-role {
+            color: var(--text-color);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        /* ===== Responsive Design ===== */
+        
+        /* Large Tablets and Small Desktops */
+        @media (max-width: 1024px) {
+            .host-detail-section {
+                max-width: 90%;
+                padding: 120px 30px 25px;
+            }
+
+            .host-image-large {
+                width: 100%;
+                height: 280px;
+            }
+
+            .biography-section {
+                width: 100%;
+            }
+
+            .other-hosts-section {
+                max-width: 90%;
+                padding: 15px 30px 70px;
+            }
+
+            .other-hosts-grid {
+                gap: 30px;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .other-host-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .other-host-card {
+                max-width: 180px;
+            }
+        }
+
+        /* Standard Tablets */
+        @media (max-width: 768px) {
+            .host-detail-section {
+                max-width: 95%;
+                padding: 100px 25px 20px;
+            }
+
+            .host-hero {
+                padding: 20px 0;
+                gap: 25px;
+            }
+
+            .host-image-large {
+                width: 100%;
+                height: 250px;
+            }
+
+            .host-name-large {
+                font-size: 22px;
+            }
+
+            .host-role-large {
+                font-size: 15px;
+            }
+
+            .biography-title {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .biography-text {
+                font-size: 14px;
+                line-height: 1.7;
+                margin-bottom: 18px;
+            }
+
+            .other-hosts-section {
+                max-width: 95%;
+                padding: 15px 25px 60px;
+            }
+
+            .other-hosts-title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .other-hosts-grid {
+                gap: 25px;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .other-host-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .other-host-card {
+                max-width: 170px;
+            }
+
+            .other-host-name {
+                font-size: 15px;
+            }
+
+            .other-host-role {
+                font-size: 11px;
+            }
+        }
+
+        /* Small Tablets and Large Phones */
+        @media (max-width: 576px) {
+            .host-detail-section {
+                padding: 80px 20px 15px;
+            }
+
+            .host-hero {
+                gap: 20px;
+                padding: 25px 10px;
+            }
+
+            .host-image-large {
+                height: 200px;
+            }
+
+            .host-name-large {
+                font-size: 20px;
+            }
+
+            .host-role-large {
+                font-size: 14px;
+            }
+
+            .biography-title {
+                font-size: 14px;
+            }
+
+            .biography-text {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .other-hosts-section {
+                padding: 10px 20px 50px;
+            }
+
+            .other-hosts-title {
+                font-size: 14px;
+            }
+
+            .other-hosts-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 25px 15px;
+                justify-items: center;
+            }
+
+            /* Center the third item when it's alone on its row */
+            .other-host-card:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+
+            .other-host-card {
+                max-width: 140px;
+            }
+
+            .other-host-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .other-host-name {
+                font-size: 14px;
+            }
+
+            .other-host-role {
+                font-size: 10px;
+            }
+        }
+
+        /* Mobile Phones */
+        @media (max-width: 480px) {
+            .host-detail-section {
+                padding: 60px 15px 10px;
+            }
+
+            .host-hero {
+                padding: 20px 8px;
+            }
+
+            .host-image-large {
+                height: 160px;
+            }
+
+            .host-name-large {
+                font-size: 18px;
+            }
+
+            .biography-text {
+                font-size: 12px;
+            }
+
+            .other-hosts-section {
+                padding: 8px 15px 40px;
+            }
+
+            .other-hosts-grid {
+                gap: 20px 10px;
+            }
+
+            /* Center the third item when it's alone on its row */
+            .other-host-card:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+
+            .other-host-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .other-host-card {
+                max-width: 120px;
+            }
+
+            .other-host-name {
+                font-size: 12px;
+            }
+
+            .other-host-role {
+                font-size: 9px;
+            }
+        }
+    </style>
+  
+</head>
+
+<body>
+    <!-- Preloader -->
+     <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html#home">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Host Detail Section -->
+        <section class="host-detail-section">
+            <div class="host-hero">
+                <img src="images/peg-2.png" alt="Peggy Ovire Leonard" class="host-image-large">
+                <div class="host-info">
+                    <h1 class="host-name-large">Peggy Ovire Leonard</h1>
+                    <p class="host-role-large">Host</p>
+                </div>
+            </div>
+
+            <div class="biography-section">
+                <h2 class="biography-title">HOST BIOGRAPHY</h2>
+                
+                <p class="biography-text">
+                    Peggy Ovire, born on October 22, 1985, in Lagos, Nigeria, is a versatile Nigerian actress, model, producer, and entrepreneur whose dynamic career makes her a standout host for <span class="highlight">The Next Naija Movie Star 💥</span>. Hailing from Ughelli in Delta State, she was the youngest of six children in a family shaped by a strict father, whose discipline instilled in her a fierce determination. Raised in Surulere, Lagos, Peggy attended Itire Nursery and Primary School and AUD Secondary School before pursuing higher education, starting at Delta State University, Abraka, and later earning a Bachelor of Science in Banking and Finance from Ambrose Alli University. Initially a model, she won the 2006 Miss Nigeria Galaxy pageant and worked with top brands, but her passion for storytelling led her to Nollywood in 2013, debuting in *Best of Enemies* under producer Uche Nancy. Her early hosting roles, like *Husbands of Lagos* backstage segments, honed her ability to engage audiences, a skill she now uses to mentor contestants.
+                </p>
+
+                <p class="biography-text">
+                    Peggy’s rise to fame came with her role in the 2015 series <a href="https://en.wikipedia.org/wiki/Husbands_of_Lagos">Husbands of Lagos</a>, earning her the nickname "Ego Oyibo" for her radiant beauty, followed by acclaimed performances in films like *Game Changer* (2016) and *Emergency* (2017), which she also produced. Her production credits, including *Ufuoma* and *Fool Me Once*, showcase her creative vision, while her acting in *The Other Woman* (2020) and *For Better for Trouble* (2022) highlights her range, earning her the Most Promising Actress of the Year (English) award at the 2015 City People Entertainment Awards. Beyond Nollywood, Peggy’s entrepreneurial spirit shines as the CEO of Peggy’s World, a fashion line reflecting her bold style. Married to actor Frederick Leonard since November 2022 after a seven-year relationship, her personal stability complements her professional success. At 5’6”, her poised presence and sharp industry insight make her a formidable host, seeking authenticity and grit in aspiring stars.
+                </p>
+
+                <p class="biography-text">
+                    A philanthropist at heart, Peggy channels her success into giving back, supporting causes for youth empowerment and women’s rights, inspired by her own journey of overcoming odds. Her 12-year career spans over 60 projects, blending romance, drama, and production, with influences from icons like Angelina Jolie and Nse Ikpe-Etim shaping her craft. On <span class="highlight">The Next Naija Movie Star 💥</span>, Peggy evaluates contestants with a blend of tough love and encouragement, drawing from her experiences as a beauty queen, actress, and producer to spot raw talent. Her $400,000 net worth reflects her status as one of Nigeria’s influential entertainers, but it’s her passion for nurturing the next generation that defines her legacy, ensuring contestants leave with not just feedback but a roadmap to success in Nollywood’s competitive landscape.
+                </p>
+            </div>
+        </section>
+
+        <!-- Other hosts Section -->
+        <section class="other-hosts-section">
+            <h2 class="other-hosts-title">JUDGES BIOGRAPHY</h2>
+            <div class="other-hosts-grid">
+                <div class="other-host-card">
+                    <img src="images/uzor.png" alt="Uzor Arukwe" class="other-host-image">
+                    <h3 class="other-host-name">Uzor Arukwe</h3>
+                    <p class="other-host-role">Judge</p>
+                </div>
+            
+                
+                <div class="other-host-card">
+                    <a href="judges.html"><img src="images/isime.png" alt="Nancy Isime" class="other-host-image"></a>
+                    <h3 class="other-host-name">Nancy Isime</h3>
+                    <p class="other-host-role">Judge</p>
+                </div>
+
+                <div class="other-host-card">
+                    <img src="images/eso.png" alt="Eso Dike" class="other-host-image">
+                    <h3 class="other-host-name">Eso Dike</h3>
+                    <p class="other-host-role">Judge</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

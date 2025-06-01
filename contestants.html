@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contestants Gallery | The Next Naija Movie Star</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        /* Internal Styles for Contestant Gallery */
+        :root {
+            --background-color: #000;
+            --text-color: #fff;
+            --primary-color: #ffba52;
+            --highlight-gold: #E6B964;
+            --highlight-orange: #E58A00;
+            --gray-text: #B3B3B3;
+            --footer-text: #282A37;
+        }
+
+         a {
+            text-decoration: none;
+            color: inherit;
+        } 
+
+        .contestants-gallery-page {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contestants-gallery-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .stage-filters {
+            display: flex;
+            gap: 1px; 
+            flex-wrap: wrap;
+        }
+
+        .stage-filter-btn {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.4);
+            border: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans';
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stage-filter-btn.active {
+            color: var(--text-color);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stage-filter-btn:not(.active):hover {
+            color: var(--text-color);
+        }
+
+        .search-container {
+            position: relative;
+            width: 360px;
+            margin-left: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 64px;
+            border-radius: 8px;
+            border: 1px solid var(--text-color);
+            background: transparent;
+            color: var(--text-color);
+            padding: 10px 14px 10px 40px;
+            font-family: 'Plus Jakarta Sans';
+            font-size: 16px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            pointer-events: none;
+        }
+
+        .contestants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            width: 100%;
+            margin: 0 auto;
+            max-width: 1120px;
+            padding: 0;
+            justify-content: space-between;
+        }
+
+        .contestant-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            width: 100%;
+            height: 264px;
+        }
+
+        .contestant-image {
+            width: 100%;
+            height: 217px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .contestant-card:hover .contestant-image {
+            transform: scale(1.05);
+        }
+
+        .contestant-name {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 12px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .contestants-gallery-container {
+                padding: 4rem 2rem 6rem;
+            }
+            
+            .contestants-grid {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contestants-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+                padding: 0 1.5rem;
+            }
+            
+            .contestant-card {
+                height: 240px;
+            }
+            
+            .contestant-card a {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+            }
+            
+            .contestant-image {
+                flex: 1;
+                height: 200px;
+                object-fit: cover;
+            }
+                
+            .stage-filter-btn {
+                padding: 8px 10px;
+                font-size: 20px;
+            }
+            
+            .stage-filter-btn.active {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contestants-gallery-container {
+                padding: 3rem 1.5rem 5rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .search-container {
+                width: 100%;
+                margin-left: 0;
+            }
+            
+            .stage-filters {
+                justify-content: space-between;
+                gap: 0;
+            }
+            
+            .contestants-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 8px;
+                gap: 18px;
+            }
+
+            .contestant-card {
+                height: 180px;
+            }
+
+            .contestant-image {
+                height: 140px;
+            }
+
+            .contestant-name {
+                font-size: 14px;
+                text-align: center;
+                margin-top: 3px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stage-filter-btn {
+                padding: 6px 8px;
+                font-size: 16px;
+            }
+            
+            .stage-filter-btn.active {
+                font-size: 16px;
+            }
+           
+            
+            .contestant-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="contestants-gallery-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="images/logo.png" alt="Logo" class="preloader-img">
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Next Naija Movie Star Logo" class="logo">
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-right desktop-nav">
+                <a href="login.html" class="login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="season">
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="contestants.html">Contestants</a></li>
+                    <li class="mobile-nav-item"><a href="judges.html">Judges</a></li>
+                    <li class="mobile-nav-item"><a href="index.html#about">About us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-extra">
+                <a href="login.html" class="mobile-login-button">Login</a>
+                <img src="images/season1.png" alt="Season 1" class="mobile-season">
+            </div>
+        </div>
+    </header>
+
+    <!-- Contestants Gallery Content -->
+    <main class="contestants-gallery-container">
+        <div class="filter-controls">
+            <div class="stage-filters">
+                <button class="stage-filter-btn active" data-stage="all">All The Contestants</button>
+                <button class="stage-filter-btn" data-stage="top18">Top 18</button>
+                <button class="stage-filter-btn" data-stage="top12">Top 12</button>
+                <button class="stage-filter-btn" data-stage="top6">Top 6</button>
+            </div>
+            
+            <div class="search-container">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search contestants...">
+            </div>
+        </div>
+
+        <div class="contestants-grid" id="contestants">
+            <!-- Contestant cards will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms of use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contestant data
+            const contestants = [
+                // Top 6
+                { name: "Mary James", stage: "top6", gender: "female" },
+                { name: "Osas Iyeke", stage: "top6", gender: "male" },
+                { name: "Chidimma Alukwe", stage: "top6", gender: "female" },
+                { name: "Tobi Oyewole", stage: "top6", gender: "male" },
+                { name: "Kemi Aliu", stage: "top6", gender: "female" },
+                { name: "Odaro Abdullai", stage: "top6", gender: "male" },
+                
+                // Top 12 (additional 6)
+                { name: "Bumi Enogie", stage: "top12", gender: "female" },
+                { name: "Osoma Chikwesili", stage: "top12", gender: "male" },
+                { name: "Funke Okotie", stage: "top12", gender: "female" },
+                { name: "Ola Bode", stage: "top12", gender: "male" },
+                { name: "Ruemu Oba", stage: "top12", gender: "female" },
+                { name: "Tolu Olabanjo", stage: "top12", gender: "male" },
+                
+                // Top 18 (additional 6)
+                { name: "Mansurah Musa", stage: "top18", gender: "female" },
+                { name: "Iguosa Ogumwenyi", stage: "top18", gender: "male" },
+                { name: "Amina Yusuf", stage: "top18", gender: "female" },
+                { name: "Kamal Rudeen", stage: "top18", gender: "male" },
+                { name: "Adaeze Nwokoye", stage: "top18", gender: "female" },
+                { name: "Emovon Ehis", stage: "top18", gender: "male" },
+                
+                // Eliminated (6)
+                { name: "Chisom Ozokwor", stage: "eliminated", gender: "female" },
+                { name: "Borie Kpesu", stage: "eliminated", gender: "male" },
+                { name: "Lola Shoneye", stage: "eliminated", gender: "female" },
+                { name: "Chisom Ndubisi", stage: "eliminated", gender: "male" },
+                { name: "Funke Adetiba", stage: "eliminated", gender: "female" },
+                { name: "Olalekan Ojodu", stage: "eliminated", gender: "male" }
+            ];
+
+            // Populate contestants grid
+            const contestantsGrid = document.getElementById('contestants');
+            
+            contestants.forEach(contestant => {
+                const card = document.createElement('div');
+                card.className = 'contestant-card';
+                card.dataset.stage = contestant.stage;
+                
+                const imageSrc = contestant.gender === 'male' ? 
+                    'images/contestant-m.png' : 'images/contestant.png';
+                
+                if (contestant.name === "Mary James") {
+                    card.innerHTML = `
+                        <a href="mary-james.html">
+                            <img src="${imageSrc}" alt="${contestant.name}" class="contestant-image">
+                            <h3 class="contestant-name">${contestant.name}</h3>
+                        </a>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <img src="${imageSrc}" alt="${contestant.name}" class="contestant-image">
+                        <h3 class="contestant-name">${contestant.name}</h3>
+                    `;
+                }
+                
+                contestantsGrid.appendChild(card);
+            });
+
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.stage-filter-btn');
+            const contestantCards = document.querySelectorAll('.contestant-card');
+            const searchInput = document.querySelector('.search-input');
+            
+            // Stage filter
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.fontSize = '16px';
+                        btn.style.fontWeight = '600';
+                        btn.style.color = 'rgba(255, 255, 255, 0.4)';
+                    });
+                    
+                    button.classList.add('active');
+                    button.style.fontSize = '24px';
+                    button.style.fontWeight = '700';
+                    button.style.color = 'var(--text-color)';
+                    
+                    const stage = button.dataset.stage;
+                    let countToShow = Infinity;
+                    
+                    if (stage === 'top18') countToShow = 18;
+                    else if (stage === 'top12') countToShow = 12;
+                    else if (stage === 'top6') countToShow = 6;
+                    
+                    // Filter cards
+                    let shownCount = 0;
+                    contestantCards.forEach((card, index) => {
+                        if (stage === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            const shouldShow = card.dataset.stage === stage || 
+                                             (['top18', 'top12', 'top6'].includes(stage) && 
+                                              ['top6', 'top12', 'top18'].includes(card.dataset.stage) && 
+                                              shownCount < countToShow);
+                            
+                            card.style.display = shouldShow ? 'flex' : 'none';
+                            if (shouldShow) shownCount++;
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                contestantCards.forEach(card => {
+                    const name = card.querySelector('.contestant-name').textContent.toLowerCase();
+                    const shouldShow = name.includes(searchTerm);
+                    
+                    // Only show if it matches search and current filter
+                    const currentFilter = document.querySelector('.stage-filter-btn.active').dataset.stage;
+                    let matchesFilter = true;
+                    
+                    if (currentFilter !== 'all') {
+                        if (currentFilter === 'top18') {
+                            matchesFilter = ['top6', 'top12', 'top18'].includes(card.dataset.stage);
+                        } else if (currentFilter === 'top12') {
+                            matchesFilter = ['top6', 'top12'].includes(card.dataset.stage);
+                        } else if (currentFilter === 'top6') {
+                            matchesFilter = card.dataset.stage === 'top6';
+                        } else {
+                            matchesFilter = card.dataset.stage === currentFilter;
+                        }
+                    }
+                    
+                    card.style.display = shouldShow && matchesFilter ? 'flex' : 'none';
+                });
+            });
+            
+            // Initialize filter button colors
+            filterButtons.forEach(btn => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.color = 'rgba(255, 255, 255, 0.4)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
